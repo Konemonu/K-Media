@@ -1,0 +1,42 @@
+###
+POST http://localhost:3000/watched/
+Content-Type: application/json
+
+{
+    "name": "4%t Week Lovers",
+    "tags": "te",
+    "type": "BL,yee,aer",
+    "author": "Maroron",
+    "artist": "Maroron",
+    "releaseStatus": "Completed",
+    "readingStatus": "Stalled",
+    "yearConsumed": "-",
+    "rating": "5",
+    "numberConsumed": "0.5"
+}
+
+###
+PUT http://localhost:3000/watched/
+Content-Type: application/json
+
+{
+    "id": "2",
+    "name": "#Sono Gap ni Yowai Tokushuu",
+    "tags": "BL",
+    "type": "Manga,Collection",
+    "author": "Mato YAMAMOTO, Long UTSUMI, Suguri YAMAGUCHI, Shouko RAKUTA, Hakata, Kusegem, Ritsuki HASHIOKA, JANMN, Machi SUEHIRO",
+    "artist": "Mato YAMAMOTO, Long UTSUMI, Suguri YAMAGUCHI, Shouko RAKUTA, Hakata, Kusegem, Ritsuki HASHIOKA, JANMN, Machi SUEHIRO",
+    "releaseStatus": "Completed",
+    "readingStatus": "Stalled",
+    "yearConsumed": "-",
+    "rating": "5",
+    "numberConsumed": "0.5"
+}
+
+###
+POST http://localhost:3000/watched/get
+Content-Type: application/json
+
+{
+    "name": "4 Week Lovers"
+}

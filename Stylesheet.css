@@ -1,0 +1,382 @@
+/* Base tags */
+body{
+    background-color: rgb(104, 78, 72);
+    margin: 0;
+    padding: 0;
+}
+
+/* Main */
+.main{
+    padding: 10px 16px;
+}
+fieldset{
+    background-color:#333333;
+    min-height: 280px;
+}
+form{
+    color: lightgray;
+}
+input[type="number" i] {
+    width: 50pt;
+}
+input[type="text" i]{
+    width: 300pt;
+}
+.smallButton{
+    width: fit-content;
+    height: fit-content;
+}
+.PageInfo{
+    visibility: collapse;
+    height: 0;
+    width: 0;
+}
+a {
+    text-align: center;
+}
+h2 {
+    text-align: center;
+}
+
+
+/* Table stuff */
+table{
+    padding: 0pt;
+    border: 3px solid black;
+    margin: 5pt;
+    font-family: JMH Typewriter;
+    width: 100%;
+    height: auto;
+}
+thead{
+    height: fit-content;
+}
+tbody tr{
+    border-bottom: 2px solid black;
+}
+tbody td{
+    padding-left: 5pt;
+}
+
+/* Misc */
+.IndexTop{
+    background-color: #377CD7;
+    border: 2px ridge black;
+    flex: 50%;
+    margin: 10px 0;
+    padding: 0 10px;
+}
+.IndexTop h1, .Index_top h1{
+    text-align: center;
+}
+.Index_top{
+    background-color: #5b746a;
+
+    border: 2px ridge black;
+    flex: 50%;
+    margin: 10px 0;
+    padding: 0 10px;
+}
+.Index_top button{
+    text-align: center;
+}
+.buttonRow {
+    margin-top: 4px;
+    display: flex;
+    flex-direction: row;
+}
+.admin{
+    margin-left: 250px;
+    padding: 10px 16px;
+    text-align: right;
+}
+.map_large {
+    max-width: 100%;
+    vertical-align: middle;
+}
+textarea[disabled]{
+    background-color: lightgray;
+    color: black;
+}
+.faction{
+    padding: 8px 16px;
+}
+.filler{
+    height: 100%;
+    border: 2px solid black;
+}
+.Officer{
+    font-size: small;
+    padding-bottom: 5pt;
+    height: 15px;
+    vertical-align: top;
+    border-bottom: 3px solid black;
+}
+.Stars{
+    color: rgb(226, 147, 0);
+}
+.test{
+    flex: 100%;
+    padding: 15px;
+}
+.armyGeneratorResults{
+    display: flex;
+    flex-wrap: wrap;
+}
+.armyGeneratorResults div{
+    flex: 25%;
+    min-width: 250pt;
+}
+.armyGeneratorResults input{
+    width: 30pt;
+}
+b{
+    color: #04AA6D;
+}
+.hidden{
+    visibility: collapse;
+    height: 0;
+}
+
+/* Cultures */
+.Cultures h3{
+    padding-left: 20pt !important;  
+}
+
+/* Faction info */
+.Faction_Top{
+    background-color: #5b746a;
+    border: 2px ridge black;
+    flex: 50%;
+    margin: 10px 0;
+    padding: 0 10px;
+}
+.Faction_Top h1{
+    text-align: center;
+}
+
+/* Icons */
+.TinyIcon{
+    height: 30px;
+    width: 30px;
+    vertical-align: middle;
+}
+.MediumIcon{
+    height: 50px;
+    width: 50px;
+    vertical-align: middle;
+}
+.InterIcon {
+    height: 100px;
+    width: 100px;
+    vertical-align: middle;
+}
+
+/* Burg stuff */
+.Burgs{
+   border: 2px solid black;
+   padding: 5px;
+   margin: 5px 0;
+}
+.Burgs:hover{
+    background-color: #799288;
+}
+.Burg_Emblem{
+    height: 200px;
+    width: 200px;
+}
+.Burgs_Top{
+    background-color: #5b746a;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: 2px ridge black;
+    flex: 50%;
+    margin: 10px 0;
+    padding: 0 10px;
+}
+.Burgs_Banner{
+    flex: 100%;
+}
+.Burgs h2{
+    text-align: left;
+}
+
+/* Division stuff */
+.Division{
+    flex: 100%;
+    display: flex;
+    flex-wrap: wrap; 
+    width: fit-content;
+}
+.Division_Card{
+    height: 360pt;
+    background-color: lightgray;
+}
+.Division_Emblem{
+    max-height: 300pt;
+    width: 250pt;
+}
+.Division_Frame{
+    border: 3px solid black; 
+    margin: 3px;
+    display: flex;
+    flex-wrap: wrap; 
+    width: fit-content;
+    align-items: flex-start;
+    flex: 100%
+}
+.Division_Numbers{
+    text-align: right;
+    padding-right: 10pt;
+}
+.Division_Text{
+    width: auto;
+}
+.Division_Top{
+    border: 3px solid black; 
+    margin: 3px;
+    display: flex;
+    flex-wrap: wrap; 
+    width: fit-content;
+    align-items: baseline;
+}
+
+/* Brigade stuff */
+.Brigade{
+    max-height: 0;
+    max-width: 0;
+}
+.Brigade .Brigade_Top{
+    visibility: collapse;
+    max-height: 0;
+}
+.Brigade_Card{
+    height: 480px;
+    background-color: lightgray;
+}
+.Brigade_Emblem{
+    max-height: 300pt;
+    width: 250pt;
+}
+.Brigade_Expanded, .Brigade_Frame{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+.Brigade_Info{
+    text-align: left;
+    font-weight: normal;
+    padding-left: 10px;
+    border-bottom: 0;
+}
+.Brigade_Name{
+    font-size: large;
+    font-weight: bold;
+    height: 30px;
+}
+.Brigade_Top{
+    border: 3px solid black; 
+    margin: 3px;
+    max-width: 760px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+
+/* Battalion stuff */
+.Battalion{
+    max-height: 0;
+}
+.Battalion_Body {
+    height: 177px;
+}
+.Battalion_Head {
+    height: 100%;
+}
+.Battalion .Battalion_Card{
+    visibility: collapse;
+    max-height: 0;
+}
+.Battalion_Card{
+    background-color: lightgray;
+    height: 480px;
+}
+.Battalion_Emblem_Infantry, .Battalion_Emblem_Artillery {
+    width: 100%;
+    max-height: 200px;
+    display: block;
+    margin: auto;
+}
+.Battalion_Emblem_Cavalry {
+    width: 100%;
+    max-width: 267px;
+    max-height: 200px;
+    display: block;
+    margin: auto;
+}
+.Battalion_Expanded{
+    margin-right: 0;
+    padding-right: 0;
+    display: flex;
+    flex-wrap: wrap; 
+}
+.Battalion_Name{
+    height: 42px;
+}
+.Battalion_Title{
+    height: 22px;
+}
+.Battalion_Name_Card{
+    text-align: center;
+    height: 60px;
+    cursor: default;
+}
+.Battalion_Name_Card:hover{
+    background-color: #04AA6D;
+}
+.Battalion_Numbers{
+    width: 30pt;
+}
+.Battalion_Text{
+    width: 80pt;
+}
+
+/* ELO */
+.leaderboard {
+    width: 100%;
+    height: auto;
+}
+
+.leaderboard thead {
+    height: 30pt;
+    background-color: green;
+}
+
+.LeaderBody tr:nth-child(even) {
+    background-color: #5cb85c;
+}
+.LeaderBody tr:nth-child(odd) {
+    background-color: darkcyan;
+}
+
+
+.releaseHeader, .statusHeader, .yearHeader {
+    width: 100px;
+}
+.ratingHeader {
+    width: 60px;
+}
+.timesHeader {
+    width: 80px;
+}
+.artistHeader, .authorHeader {
+    width: 295px;
+}
+.typeHeader {
+    width: 100px;
+}
+.tagsHeader {
+    width: 150px;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+    <title>Media Database</title>
+    <!--<link rel="icon" type="image/svg+xml" href="Resources/Misc/Azenor.svg">-->
+    <link rel="stylesheet" href="Stylesheet.css">
+    <script src="Scripts/GenericScripts.js"></script>
+    <script src="Scripts/dbScripts.js"></script>
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+        
+    <div class="main">
+        <div class="IndexTop">
+            <h1 id="databaseTitle">
+                Watchlist
+            </h1>
+        </div>
+        <div class="Index_top">
+            <div class="leaderboardInput" id="leaderboardInput">
+                <label for="nameSearch">| Name</label>
+                <input type="text" id="nameSearch">
+
+                <label for="typeSearch">| Type</label>
+                <input type="text" name="typeSearch" id="typeSearch">
+
+                <label for="tagsSearch">| Tags</label>
+                <input type="text" id="tagsSearch" placeholder="Separate tags with a comma"> |
+
+                <label for="pauseSearch">Pause search</label>
+                <input type="checkbox" name="pauseSearch" id="pauseSearch">
+                
+                <button type="button" id="addItemButton">Add media</button>
+                <button type="button" id="watchSwitch">Switch to watched list</button>
+                <br>
+            </div>
+            <table id="databaseTable" class="leaderboard">
+
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+requires Node.js (can be downloaded at https://nodejs.org/en/download)
+
+1. Open "Start Server.bat" to make it possible to interract with the database, keep the window, it opens, open untill you are done with the database (when you are done you can just close it without issue).
+
+2. Open "Index.html" on this page you can see and interact with the database.
+    2.1 You can search the database by typing in the search bars (the database will be searched while you type so you dont have to press enter). The search is not case sensitive so you dont have to worry about capital letters, spaces around the names and individual tags/types/authors/artists are ignored. tags/types/authors/artists can be searched in any order.
+   
+    2.2 If you are not sure about the name or tags you can put in a "%", this acts a a joker and will be interpreted as "you can put anything here" by the search.
+   
+    2.3 If you click on the "add media" button whatever you have typed in the search bars will be added as a new entry (be sure to seperate tags/types/authors/artists with a comma or the search wont work propperly, tags/types/authors/artists will be auto sorted alphabetically when put in database).
+    
+    2.4 If you click on the "add media" button and the name already exists in the database, that entry will be updated with the new data (tags/types/authors/artists will be auto sorted alphabetically when put in database).
+    
+    2.5 If you click on the red cross before a name you will delete that entry from the database.
+
+3. Everything about this works offline, there is no part that connects to the internet, it only interacts with the database (K-Media/data/media.db)
+
+--Added "pause search" function
+--Added watched/seen database (can switch between databases by pressing the "switch to x list" button)
