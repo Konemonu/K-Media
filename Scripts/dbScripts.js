@@ -1,12 +1,24 @@
-async function populateLeadeboard(mediaList) {
+async function populateLeadeboard(mediaList, search) {
   let leaderboard = document.getElementById("databaseTable");
-  let content = `<thead>
-                      <th class="nameHeader">Name</th>
-                      <th class="typeHeader">Type</th>
-                      <th class="tagsHeader">Tags</th>
-                  </thead><tbody class="LeaderBody">`;
-  specialSort(mediaList, "name");
+  if (search == 0) {
+    document.getElementById("databaseTableHead").innerHTML = `
+                      <th class="nameHeader"><button type="button" id="nameSortDown"class="name down activeButton">&#8595;</button>  Name  <button type="button" id="nameSortUp" class="name up">&#8593;</button></th>
+                      <th class="typeHeader"><button type="button" id="typeSortDown" class="type down ">&#8595;</button>  Type  <button type="button" id="typeSortUp" class="type up ">&#8593;</button></th>
+                      <th class="tagsHeader"><button type="button" id="tagsSortDown" class="tags down">&#8595;</button>  Tags  <button type="button" id="tagsSortUp" class="tags up">&#8593;</button></th>
+                  `;
+    
+    let buttons = document.getElementById("databaseTableHead").getElementsByTagName("button");
+    
+    for (i = 0; i < buttons.length; i++) {
+      let currButton = buttons[i];
+      currButton.addEventListener('click', sortLeaderboard);
+    }
+    
+  }
+  let sortBy = document.getElementsByClassName("activeButton")[0].classList;
 
+  specialSort(mediaList, sortBy[0], sortBy[1]);
+  let content = "";
   for (i = 0; i < mediaList.length; i++) {
     let currItem = mediaList.at(i);
     content += `<tr>
@@ -16,26 +28,36 @@ async function populateLeadeboard(mediaList) {
     `;
   }
 
-  content += `</body>`;
   leaderboard.innerHTML = content;
 }
 
-async function populateWatchedLeadeboard(mediaList) {
+async function populateWatchedLeadeboard(mediaList, search) {
   let leaderboard = document.getElementById("databaseTable");
-  let content = `<thead>
-                      <th class="nameHeader">Name</th>
-                      <th class="authorHeader">Author</th>
-                      <th class="artistHeader">Artist</th>
-                      <th class="releaseHeader">Release status</th>
-                      <th class="statusHeader">R/W status</th>
-                      <th class="yearHeader">Year consumed</th>
-                      <th class="ratingHeader">Rating</th>
-                      <th class="timesHeader">Times consumed</th>
-                      <th class="typeHeader">Type</th>
-                      <th class="tagsHeader">Tags</th>
-                  </thead><tbody class="LeaderBody">`;
-  specialSort(mediaList, "name");
+  if (search == 0) {
+    document.getElementById("databaseTableHead").innerHTML = `
+                      <th class="nameHeader"><button type="button" id="nameSortDown"class="name down activeButton">&#8595;</button>  Name  <button type="button" id="nameSortUp" class="name up">&#8593;</button></th>
+                      <th class="authorHeader"><button type="button" id="authorSortDown"class="author down ">&#8595;</button>  Author  <button type="button" id="authorSortUp" class="author up">&#8593;</button></th>
+                      <th class="artistHeader"><button type="button" id="artistSortDown"class="artist down ">&#8595;</button>  Artist  <button type="button" id="artistSortUp" class="artist up">&#8593;</button></th>
+                      <th class="releaseHeader"><button type="button" id="releaseStatusSortDown"class="releaseStatus down ">&#8595;</button>  Release status  <button type="button" id="releaseStatusSortUp" class="releaseStatus up">&#8593;</button></th>
+                      <th class="statusHeader"><button type="button" id="readingStatusSortDown"class="readingStatus down ">&#8595;</button>  R/W status  <button type="button" id="readingStatusSortUp" class="readingStatus up">&#8593;</button></th>
+                      <th class="yearHeader"><button type="button" id="yearConsumedSortDown"class="yearConsumed down ">&#8595;</button>  Year consumed  <button type="button" id="yearConsumedSortUp" class="yearConsumed up">&#8593;</button></th>
+                      <th class="ratingHeader"><button type="button" id="ratingSortDown"class="rating down ">&#8595;</button>  Rating  <button type="button" id="ratingSortUp" class="rating up">&#8593;</button></th>
+                      <th class="timesHeader"><button type="button" id="numberConsumedSortDown"class="numberConsumed down ">&#8595;</button>  Times consumed  <button type="button" id="numberConsumedSortUp" class="numberConsumed up">&#8593;</button></th>
+                      <th class="typeHeader"><button type="button" id="typeSortDown" class="type down ">&#8595;</button>  Type  <button type="button" id="typeSortUp" class="type up ">&#8593;</button></th>
+                      <th class="tagsHeader"><button type="button" id="tagsSortDown" class="tags down">&#8595;</button>  Tags  <button type="button" id="tagsSortUp" class="tags up">&#8593;</button> </th>
+                  `;//</thead><tbody class="LeaderBody">
+    let buttons = document.getElementById("databaseTableHead").getElementsByTagName("button");
 
+    for (i = 0; i < buttons.length; i++) {
+      let currButton = buttons[i];
+      currButton.addEventListener('click', sortLeaderboard);
+    }
+  }
+  let sortBy = document.getElementsByClassName("activeButton")[0].classList;
+
+  specialSort(mediaList, sortBy[0], sortBy[1]);
+
+  let content = "";
   for (i = 0; i < mediaList.length; i++) {
     let currItem = mediaList.at(i);
     content += `<tr>
@@ -52,8 +74,19 @@ async function populateWatchedLeadeboard(mediaList) {
     `;
   }
 
-  content += `</body>`;
   leaderboard.innerHTML = content;
+}
+
+async function sortLeaderboard (event) {
+  let activeButton = document.getElementsByClassName("activeButton")[0];
+  if (activeButton == event.srcElement) {
+    return
+  }
+  else {
+    activeButton.classList.remove("activeButton");
+    event.srcElement.classList.add("activeButton");
+    searchDatabase();
+  }
 }
 
 async function searchDatabase(){
@@ -71,7 +104,7 @@ async function searchDatabase(){
       };
       
       let mediaList = await getMediaList(search);
-      populateLeadeboard(mediaList);
+      populateLeadeboard(mediaList, 1);
     }
     else {
       let nameSearch = document.getElementById("nameSearch").value;
@@ -99,7 +132,7 @@ async function searchDatabase(){
       };
 
       let mediaList = await getWatchedMediaList(search);
-      populateWatchedLeadeboard(mediaList);
+      populateWatchedLeadeboard(mediaList, 1);
     }
   }
 }
@@ -148,7 +181,7 @@ async function addItem(){
   document.getElementById("pauseSearch").checked = false;
 
   let mediaList = await getMediaList();
-  populateLeadeboard(mediaList);
+  populateLeadeboard(mediaList, 1);
 
 }
 
@@ -224,7 +257,7 @@ async function addWatchedItem(){
   document.getElementById("pauseSearch").checked = false;
 
   let mediaList = await getWatchedMediaList();
-  populateWatchedLeadeboard(mediaList);
+  populateWatchedLeadeboard(mediaList, "name", 0);
 
 }
 
@@ -239,7 +272,7 @@ async function deleteItem(id) {
                 })
             });
   let mediaList = await getMediaList();
-  populateLeadeboard(mediaList);
+  populateLeadeboard(mediaList, 1);
 }
 async function deleteWatchedItem(id) {
   await fetch (WATCHED_URL, {
@@ -252,7 +285,7 @@ async function deleteWatchedItem(id) {
                 })
             });
   let mediaList = await getWatchedMediaList();
-  populateWatchedLeadeboard(mediaList);
+  populateWatchedLeadeboard(mediaList, "name", 0);
 }
 
 async function editWatchItem(id) {
@@ -328,7 +361,7 @@ async function watchedSwitch() {
   `;
 
   let mediaList = await getWatchedMediaList();
-  populateWatchedLeadeboard(mediaList);
+  populateWatchedLeadeboard(mediaList, 0);
   document.getElementById("tagsSearch").addEventListener('input', searchDatabase);
   document.getElementById("nameSearch").addEventListener('input', searchDatabase);
   document.getElementById("typeSearch").addEventListener('input', searchDatabase);
@@ -366,7 +399,7 @@ async function watchSwitch() {
   `;
 
   let mediaList = await getMediaList();
-  populateLeadeboard(mediaList);
+  populateLeadeboard(mediaList, 0);
   document.getElementById("tagsSearch").addEventListener('input', searchDatabase);
   document.getElementById("nameSearch").addEventListener('input', searchDatabase);
   document.getElementById("typeSearch").addEventListener('input', searchDatabase);
@@ -376,7 +409,7 @@ async function watchSwitch() {
 
 async function initialize() {
   let mediaList = await getMediaList();
-  populateLeadeboard(mediaList);
+  populateLeadeboard(mediaList, 0);
   document.getElementById("tagsSearch").addEventListener('input', searchDatabase);
   document.getElementById("nameSearch").addEventListener('input', searchDatabase);
   document.getElementById("typeSearch").addEventListener('input', searchDatabase);

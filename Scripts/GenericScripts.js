@@ -127,8 +127,25 @@ function getOrdinal(n) { //Dianne Pena
 }
 
 function specialSort(array, criteria, reverse){
+    if (reverse == null) {reverse = 0}
     array.sort(function (a, b) {
-            if (reverse == null){
+            if (reverse == "r" || reverse == 1 || reverse == "up") {
+                const a1st =  1;
+                const b1st = -1;
+                const equal = 0;
+
+                if (b[criteria] < a[criteria]) {
+                    return b1st;
+                }
+                else if (a[criteria] < b[criteria]) {
+                    return a1st;
+                }
+                else {
+                    return equal;
+                }
+            }
+            else 
+            {
                 const a1st = -1;
                 const b1st =  1;
                 const equal = 0;
@@ -142,21 +159,6 @@ function specialSort(array, criteria, reverse){
                 else {
                     return equal;
                 }
-            }
-            else if (reverse == "r") {
-                const a1st =  1;
-                const b1st = -1;
-                const equal = 0;
-
-                if (b[criteria] < a[criteria]) {
-                    return b1st;
-                }
-                else if (a[criteria] < b[criteria]) {
-                    return a1st;
-                }
-                else {
-                    return equal;
-            }
             }
         });
 
