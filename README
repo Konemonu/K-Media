@@ -17,3 +17,4 @@ requires Node.js (can be downloaded at https://nodejs.org/en/download)
 
 --Added "pause search" function
 --Added watched/seen database (can switch between databases by pressing the "switch to x list" button)
+--Added edit button for easier editing of entries

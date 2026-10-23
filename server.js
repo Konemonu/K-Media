@@ -28,7 +28,7 @@ app.use(express.static("public"));
 
 app.post("/toWatch/get", function (req, res) {
     const body = cleanUp(req.body);
-    let nameSearch = req.body.name.trim().replaceAll("'", "_");
+    let nameSearch = body.name.replaceAll("'", "_");
     let tagsList = body.tags;
     let typeSearch = body.type;
 
@@ -147,7 +147,7 @@ app.delete("/toWatch/", function (req, res) {
 
 app.post("/watched/get", function (req, res) {
     let body = cleanUp(req.body);
-    let nameSearch = body.name.trim().replaceAll('"', "_");
+    let nameSearch = body.name.replaceAll('"', "_");
     let tagsSearch = body.tags
     let typeSearch = body.type
     let authorSearch = body.author
@@ -157,6 +157,7 @@ app.post("/watched/get", function (req, res) {
     let yearSearch = body.yearConsumed;
     let ratingSearch = body.rating;
     let timesSearch = body.numberConsumed;
+    let id = body.id;
     let tagsList;
     if (tagsSearch != null) {
       tagsList = tagTrim(tagsSearch);
@@ -176,6 +177,7 @@ app.post("/watched/get", function (req, res) {
       AND yearConsumed LIKE '%${yearSearch}%'
       AND rating LIKE '%${ratingSearch}%'
       AND numberConsumed LIKE '%${timesSearch}%'
+      AND id LIKE '${id}'
       `,
       [],
       function (err, rows) {
@@ -379,6 +381,9 @@ function cleanUp(body) {
   if (body.yearConsumed == null) {body.yearConsumed = ""}
   if (body.rating == null) {body.rating = ""}
   if (body.numberConsumed == null) {body.numberConsumed = ""}
+  if (body.id == null) {body.id = "%"}
+  if (body.name == null) {body.name = ""}
+  else {body.name = body.name.trim()}
 
   return body
 }

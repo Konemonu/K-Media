@@ -10,7 +10,7 @@ async function populateLeadeboard(mediaList) {
   for (i = 0; i < mediaList.length; i++) {
     let currItem = mediaList.at(i);
     content += `<tr>
-    <td><button type="button" onclick="deleteItem(${currItem.id})">&#10060</button>${currItem.name}</td>
+    <td><button type="button" onclick="deleteItem(${currItem.id})">&#10060</button><button type="button" onclick="editWatchItem(${currItem.id})">&#x270E;</button>${currItem.name}</td>
     <td>${currItem.type}</td>
     <td>${currItem.tags}</td>
     `;
@@ -39,7 +39,7 @@ async function populateWatchedLeadeboard(mediaList) {
   for (i = 0; i < mediaList.length; i++) {
     let currItem = mediaList.at(i);
     content += `<tr>
-    <td><button type="button" onclick="deleteWatchedItem(${currItem.id})">&#10060</button>${currItem.name}</td>
+    <td><button type="button" onclick="deleteWatchedItem(${currItem.id})">&#10060</button><button type="button" onclick="editWatchedItem(${currItem.id})">&#x270E;</button>${currItem.name}</td>
     <td>${currItem.author}</td>
     <td>${currItem.artist}</td>
     <td>${currItem.releaseStatus}</td>
@@ -253,6 +253,33 @@ async function deleteWatchedItem(id) {
             });
   let mediaList = await getWatchedMediaList();
   populateWatchedLeadeboard(mediaList);
+}
+
+async function editWatchItem(id) {
+  let updateEntry = await getMediaList({"id": `${id}`});
+  updateEntry = updateEntry.at(0);
+
+  document.getElementById("pauseSearch").checked = true;
+  document.getElementById("nameSearch").value = updateEntry.name;
+  document.getElementById("tagsSearch").value = updateEntry.tags;
+  document.getElementById("typeSearch").value = updateEntry.type;
+}
+
+async function editWatchedItem(id) {
+  let updateEntry = await getWatchedMediaList({"id": `${id}`});
+  updateEntry = updateEntry.at(0);
+
+  document.getElementById("pauseSearch").checked = true;
+  document.getElementById("nameSearch").value = updateEntry.name;
+  document.getElementById("tagsSearch").value = updateEntry.tags;
+  document.getElementById("typeSearch").value = updateEntry.type;
+  document.getElementById("authorSearch").value = updateEntry.author;
+  document.getElementById("artistSearch").value = updateEntry.artist;
+  document.getElementById("releaseSearch").value = updateEntry.releaseStatus;
+  document.getElementById("statusSearch").value = updateEntry.readingStatus;
+  document.getElementById("yearSearch").value = updateEntry.yearConsumed;
+  document.getElementById("ratingSearch").value = updateEntry.rating;
+  document.getElementById("timesSearch").value = updateEntry.numberConsumed;
 }
 
 async function watchedSwitch() {
